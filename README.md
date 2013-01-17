@@ -1,4 +1,4 @@
 lock_free_list
 ==============
 
-lock free linked list
+Just a toy lock_free_linked_list
