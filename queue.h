@@ -51,7 +51,7 @@ void EnQueue(Queue* queue, int val) {
 	return;
 }
 
-int Dequeue(Queue* queue) {
+int Dequeue(Queue* queue, int* val) {
 	QueueNode* oldHead = queue->head->next;
 	QueueNode* head = oldHead;
 
@@ -59,13 +59,13 @@ int Dequeue(Queue* queue) {
 		oldHead = queue->head->next;
 		head = queue->head->next;
 		if (head == NULL) {
-			return 0;
+			return -1;
 		}
 	} while (!casX((volatile void **)&queue->head->next, (void *)head, (void *)head->next));
 
-	int val = oldHead->val;
+	*val = oldHead->val;
 	deleteQueueNode(oldHead);
-	return val;
+	return 0;
 }
 
 #endif
