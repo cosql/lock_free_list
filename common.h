@@ -1,7 +1,6 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include <stdlib.h>
 
 void *setPointer( void **dest, void *val )
 {
@@ -35,8 +34,8 @@ static inline int casX(volatile void** addr,
                         const void *oldVal,
                         const void *newVal)
 {
-    unsigned long old_high = (unsigned long long)oldVal >> 32, old_low = (unsigned long)oldVal;
-    unsigned long new_high = (unsigned long long)newVal >> 32, new_low = (unsigned long)newVal;
+    unsigned long old_high = (unsigned long)oldVal >> 32, old_low = (unsigned long)oldVal;
+    unsigned long new_high = (unsigned long)newVal >> 32, new_low = (unsigned long)newVal;
 	return casXInternal(addr, old_high, old_low, new_high, new_low);
 }
 
